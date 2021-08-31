@@ -862,16 +862,16 @@ function sayHello() {
   getNumForIP( '10.0.0.1' ) // => 167772161
   -----------------------------------------------------------------*/
   // Your solution for 25-getNumForIP here:
-  
-  function getNumForIP(ip) {
-    var chunks = ip.split('.').reverse();
-    var sum = 0;
-    chunks.forEach(function(chunk, idx) {
-      sum += parseInt(chunk) * 256**idx;
-    });
-    return sum;
+ const getNumForIP = (ip) => {
+  let intNums = [], num = 0, j = 0;
+  const strNums = ip.split('.');
+  strNums.forEach(el => intNums.push(parseInt(el)));
+  for (let i = intNums.length - 1; i >= 0; i--) {
+    num += intNums[i] * (256 ** j)
+    j += 1;
   }
-  
+  return num;
+}
   
   
   /*-----------------------------------------------------------------
